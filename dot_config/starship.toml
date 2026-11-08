@@ -1,0 +1,81 @@
+# ==============================================================================
+# STARSHIP CONFIGURATION - PROMPT ERGONÓMICO EN DOS LÍNEAS
+# Optimizado con la paleta Monokai Cálida
+# ==============================================================================
+
+# Estructura limpia y secuencial en DOS líneas estrictas (Evita duplicados)
+format = """
+$battery
+$username$hostname$directory$git_branch$git_status$nodejs$package$cmd_duration
+$character"""
+
+# Símbolo de entrada principal (Línea 2 limpia exclusivamente para comandos)
+[character]
+#success_symbol = "[➜](bold #fc9867)" # Naranja Monokai distintivo
+error_symbol = "[✗](bold #ff6188)"   # Rojo Monokai para errores de ejecución
+vicmd_symbol = "[V](bold #a6e22e)"   # Verde para modo comando de Vi/Neovim
+
+# Directorio actual inteligente (Recorta rutas excesivamente largas)
+[directory]
+truncation_length = 2
+truncate_to_repo = true
+truncation_symbol = ".../"
+style = "bold #66d9ef"              # Cian Monokai para la ruta
+format = "[$path]($style) "
+#format = "📁 [$path]($style) "
+
+# Gestión de Batería en tiempo real sin saturar la ruta principal
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡ "
+discharging_symbol = "🔻 "
+disabled = false
+
+[[battery.display]]
+threshold = 10
+style = "bold #ff6188"              # Alerta roja si es menor al 20%
+
+[[battery.display]]
+threshold = 100
+style = "bold #a6e22e"              # Color verde Monokai estable
+
+# Entorno de Git - Ramas
+[git_branch]
+#symbol = "🌿 "
+style = "bold #fc9867"              # Naranja Monokai
+format = "on [$symbol$branch]($style) "
+
+# Entorno de Git - Estados visuales rápidos
+[git_status]
+style = "bold #ae81ff"              # Lila Monokai
+conflicted = "⚔️ "
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "🌀 "
+stashed = "📦 "
+modified = "🛠️ "
+staged = "🟩 "
+deleted = "🗑️ "
+format = "[$all_status$text]($style) "
+
+# Entornos de desarrollo de microservicios (Laravel/Node)
+[nodejs]
+symbol = "🟢 Node "
+style = "bold #a6e22e"
+format = "via [$symbol$version]($style) "
+
+[package]
+symbol = "📦 "
+style = "bold #f4bf75"
+format = "is [$symbol$version]($style) "
+
+[hostname]
+ssh_only = false                     # Solo se muestra si estás dentro de una sesión remota/SSH
+style = "bold dimmed #f8f8f2"
+format = "at [$hostname]($style) "
+
+[cmd_duration]
+min_time = 2_000                    # Te avisa si un comando (ej: despliegue pod/db) tarda más de 2 segundos
+style = "bold #f4bf75"
+format = "took [$duration]($style) "

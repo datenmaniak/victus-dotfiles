@@ -1,0 +1,411 @@
+/* ============================================================
+   ESTILO GENERAL PARA AMBAS BARRAS
+   ============================================================ */
+
+window#waybar {
+    font-family: 'JetBrainsMono','Roboto', monospace;
+    font-size: 12px;
+    background-color: rgba(52, 34, 22, 0.94);
+    border-bottom: 3px solid rgba(140, 74, 35, 0.4);
+    color: #ffca99;
+    transition-property: background-color;
+    transition-duration: .5s;
+    background: #342216;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+window#waybar.termite {
+    background-color: #3f2a1d;
+}
+
+window#waybar.chromium {
+    background-color: #1a110b;
+    border: none;
+}
+
+/* ============================================================
+   BARRA SUPERIOR  (solo workspaces, botones redondeados)
+   ============================================================ */
+
+window#waybar.barra-superior {
+    background: #342216;
+    border-bottom: none;
+    padding: 4px 8px;
+    min-height: 26px;
+}
+
+window#waybar.barra-superior #workspaces {
+    margin: 0 4px;
+    padding: 0 4px;
+    background: transparent;
+}
+
+window#waybar.barra-superior #workspaces button {
+    padding: 0 8px;
+    margin: 0 3px;
+    min-width: 18px;
+    color: #ffaa75;
+    border: none;
+    box-shadow: none;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    background: #5c3017;
+}
+
+window#waybar.barra-superior #workspaces button:hover {
+    background-color: #8c4a23;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+window#waybar.barra-superior #workspaces button.focused,
+window#waybar.barra-superior #workspaces button.active {
+    background-color: #b35924;
+    color: #ffffff;
+    box-shadow: inset 0 0 0 2px #ffb366;   
+}
+
+window#waybar.barra-superior #workspaces button.urgent {
+    background-color: #cc4425;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+/* ============================================================
+   BARRA INFERIOR
+   ============================================================ */
+
+window#waybar.barra-inferior {
+    background-color: rgba(52, 34, 22, 0.94);
+    border-bottom: 3px solid rgba(140, 74, 35, 0.4);
+    color: #e6a437;
+    font-size: 13px;
+    background: #342216;
+}
+
+button {
+    box-shadow: inset 0 -3px transparent;
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffaa75;
+}
+
+#pulseaudio:hover {
+    background-color: #b38600;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffca99;
+}
+
+#workspaces button:hover {
+    background: rgba(140, 74, 35, 0.3);
+    color: #ffffff;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+    background-color: #b35924;
+    color: #ffffff;
+    box-shadow: inset 0 -3px #ffb366;
+}
+
+#workspaces button.urgent {
+    background-color: #cc4425;
+    color: #ffffff;
+}
+
+#mode {
+    background-color: #b35924;
+    color: #ffffff;
+    box-shadow: inset 0 -3px #ffb366;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd,
+#custom-gammastep,
+#custom-power {
+    padding: 0 10px;
+    color: #ffca99;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    background-color: #8c4a23;
+    color: #ffffff;
+}
+
+#battery {
+    background-color: #d99b66;
+    color: #2b180c;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #ffffff;
+    background-color: #3b7a57;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffaa75;
+        color: #2b180c;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #cc4425;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#power-profiles-daemon {
+    padding-right: 15px;
+}
+
+#power-profiles-daemon.performance {
+    background-color: #cc4425;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: #3b6b8c;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: #3b7a57;
+    color: #ffffff;
+}
+
+label:focus {
+    background-color: #1a110b;
+}
+
+#cpu {
+    background-color: #3b7a57;
+    color: #ffffff;
+}
+
+#memory {
+    background-color: #7b4b94;
+    color: #ffffff;
+}
+
+#disk {
+    background-color: #804000;
+    color: #ffffff;
+}
+
+#backlight {
+    background-color: #6c8c8c;
+    color: #ffffff;
+}
+
+#network {
+    background-color: #3b6b8c;
+    color: #ffffff;
+}
+
+#network.disconnected {
+    background-color: #cc4425;
+    color: #ffffff;
+}
+
+#pulseaudio {
+    background-color: #d99b26;
+    color: #2b180c;
+}
+
+#pulseaudio.muted {
+    background-color: #5c7373;
+    color: #ffffff;
+}
+
+#wireplumber {
+    background-color: #e6ccb2;
+    color: #2b180c;
+}
+
+#wireplumber.muted {
+    background-color: #cc4425;
+    color: #ffffff;
+}
+
+#custom-media {
+    background-color: #4c8c73;
+    color: #ffffff;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #4c8c73;
+}
+
+#custom-media.custom-vlc {
+    background-color: #d98c26;
+}
+
+#temperature {
+    background-color: #d97326;
+    color: #ffffff;
+}
+
+#temperature.critical {
+    background-color: #cc4425;
+    color: #ffffff;
+}
+
+#tray {
+    background-color: #3b6b8c;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #cc4425;
+}
+
+#idle_inhibitor {
+    background-color: #4a3528;
+    color: #ffca99;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ffaa75;
+    color: #2b180c;
+}
+
+#mpd {
+    background-color: #4c8c73;
+    color: #ffffff;
+}
+
+#mpd.disconnected {
+    background-color: #cc4425;
+}
+
+#mpd.stopped {
+    background-color: #5c7373;
+}
+
+#mpd.paused {
+    background-color: #3b7a57;
+}
+
+#language {
+    background: #009980;
+    color: #ffe6f5;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    background: #7ca88c;
+    color: #2b180c;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#scratchpad.empty {
+    background-color: transparent;
+}
+
+/* ============================================================
+   MÓDULOS CUSTOM  (gammastep y power)
+   ============================================================ */
+
+#custom-gammastep {
+    background-color: #533f73;
+    color: #ffffff;
+    padding: 0 10px;
+    margin: 0 2px;
+}
+
+#custom-power {
+    background-color: #cc4425;
+    color: #ffffff;
+    padding: 0 10px;
+    margin: 0 2px;
+}
+
+/* ============================================================
+   PRIVACY
+   ============================================================ */
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+    color: #ffffff;
+}
+
+#privacy-item.screenshare {
+    background-color: #bf4d00;
+}
+
+#privacy-item.audio-in {
+    background-color: #268c3a;
+}
+
+#privacy-item.audio-out {
+    background-color: #0056b3;
+}

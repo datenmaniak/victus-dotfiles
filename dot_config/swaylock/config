@@ -1,0 +1,11 @@
+# Ruta a la imagen de fondo
+image=~/wallpapers/i-see-you-ll-2560x1440.jpg
+
+# Modo de escalado de la imagen (fill, stretch, fit, center, tile)
+scaling=fill
+
+# Muestra el indicador del teclado/contraseña
+indicator
+
+# Opcional: Color de fondo si la imagen no cubre todo
+color=000000

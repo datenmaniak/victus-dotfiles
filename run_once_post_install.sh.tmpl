@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+systemctl --user daemon-reload
+systemctl --user enable --now battery-check.timer
+systemctl --user start battery-check.timer
+echo "[info] Battery checker activado."
+
+#  Backup on NAS
+systemctl --user enable --now backup-tinynas.service
+echo "[info] Backup on Tinynas activado."
+
+loginctl enable-linger $USER
+echo "[INFO]  lingering para $USER activado"
+

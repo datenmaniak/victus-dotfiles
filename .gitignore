@@ -1,0 +1,4 @@
+# Ignorar backups y archivos temporales
+*.swp
+.DS_Store
+/home/wpp/.config/chezmoi

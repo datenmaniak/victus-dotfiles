@@ -1,0 +1,22 @@
+# Configuración base de chezmoi (segura para repo público)
+# Genera ~/.config/chezmoi/chezmoi.toml localmente
+
+encryption = "gpg"
+
+[gpg]
+recipient = "{{ .chezmoi.username }}"
+
+[edit]
+hardlink = false
+
+[pinentry]
+command = "pinentry"
+
+[global]
+edit.command = "vim"
+
+# Config por máquina
+[myself]
+hostname = "{{ .chezmoi.hostname }}"
+username = "{{ .chezmoi.username }}"
+
